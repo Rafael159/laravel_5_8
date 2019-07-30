@@ -1,2 +1,0 @@
-//Esse repositório recebe os arquivos do curso Laravel 5.8
-//O curso está sendo acompanhado pelo canal Coder's Tape - Youtube
