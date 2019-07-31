@@ -1,3 +1,9 @@
-<h1>About Us</h1>
+@extends('layout')
 
-<p>Company bio here...</p>
+@section('content')
+
+    <h1>About Us</h1>
+
+    <p>Company bio here...</p>
+
+@endsection
