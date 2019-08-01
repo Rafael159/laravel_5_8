@@ -4,27 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project Mirage</title>
+    <title>@yield('title', 'Learning Laravel 5.8')</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="about">About us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="contact">Contact us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="customers">Customers</a>
-        </li>
-    </ul>
-
     <div class="container">
+        @include('nav')
+        
         @yield('content')
     </div>
 
