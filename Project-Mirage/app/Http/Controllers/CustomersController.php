@@ -14,4 +14,18 @@ class CustomersController extends Controller
             'customers' => $customers
         ]);
     }
+
+    public function store(Request $request){
+        $data = $request->validate([
+            'name' => 'required|unique:customers|min:3',
+            'email' => 'required|unique:customers|email'
+        ]);
+
+        $customer = new Customer();
+        $customer->name = request('name');
+        $customer->email = request('email');
+        $customer->save();
+
+        return back();
+    }
 }
