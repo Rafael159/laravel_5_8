@@ -10,39 +10,53 @@ class CustomersController extends Controller
 {
     public function index(){
         $customers = Customer::all();
-
+        
         return view('customers.index', compact('customers'));
     }
 
     public function create(){
         $companies = Company::all();
+        $customer = new Customer();
 
-        return view('customers.create', compact('companies'));
+        return view('customers.create', compact('companies', 'customer'));
     }
 
-    public function store(Request $request){
-        $data = $request->validate([
-            'name' => 'required|unique:customers|min:3',
-            'email' => 'required|unique:customers|email',
-            'active' => 'required',
-            'company_id' => 'required'
-        ]);
+    public function store(){
 
-        Customer::create($data);
+        Customer::create($this->validateRequest());
 
         return redirect('customers');
     }
 
-    public function show(Customer $customer){
-       
+    public function show(Customer $customer){       
         return view('customers.show', compact('customer'));
     }
 
     public function edit(Customer $customer){
-        return view('customers.edit', compact('customer'));
+        $companies = Company::all();       
+
+        return view('customers.edit', compact('customer', 'companies'));
     }
 
     public function update(Customer $customer){
+        
+        $customer->update($this->validateRequest());
 
+        return redirect('customers/'. $customer->id );
+    }
+
+    public function destroy(Customer $customer){
+        $customer->delete();
+
+        return redirect('customers');
+    }
+
+    private function validateRequest(){
+       return request()->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'active' => 'required',
+            'company_id' => 'required'
+        ]);
     }
 }

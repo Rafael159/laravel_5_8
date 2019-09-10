@@ -14,7 +14,7 @@
                 @method('PATCH')
                 @include('customers.form')
         
-                <button type="submit" class="btn btn-primary">Add customer</button>
+                <button type="submit" class="btn btn-primary">Edit customer</button>
             </form>
         </div>
     </div>
